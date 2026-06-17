@@ -22,8 +22,8 @@ const JUDGMENT_TEXTS := {
 	"good": "GOOD",
 	"miss": "MISS...",
 	"early": "EARLY",
-	"fake_blocked": "낚였다!",
-	"miss_fake": "무시 성공!",
+	"fake_blocked": "TRICKED!",
+	"miss_fake": "IGNORED!",
 }
 
 func update_enemy_hp(current: int, max_hp: int) -> void:
@@ -45,7 +45,7 @@ func update_combo(combo: int) -> void:
 		combo_label.visible = false
 		return
 	combo_label.visible = true
-	combo_label.text = str(combo) + " 콤보"
+	combo_label.text = str(combo) + " combo"
 
 func show_combo_text(text: String) -> void:
 	combo_label.text = text

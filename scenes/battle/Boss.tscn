@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://boss"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/battle/Boss.gd" id="1_boss"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_face"]
+font_size = 56
 
 [node name="Boss" type="Node2D"]
 script = ExtResource("1_boss")
@@ -12,12 +15,12 @@ position = Vector2(-75, -200)
 
 [node name="FaceLabel" type="Label" parent="."]
 position = Vector2(-40, -165)
-text = "😠"
+text = ">:("
 label_settings = SubResource("LabelSettings_face")
 
 [node name="QuoteBubble" type="Panel" parent="."]
 visible = false
-position = Vector2(-120, -280)
+position = Vector2(-120, -300)
 size = Vector2(240, 100)
 
 [node name="QuoteLabel" type="Label" parent="QuoteBubble"]
@@ -36,6 +39,3 @@ show_percentage = false
 [node name="PatternTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
-
-[sub_resource type="LabelSettings" id="LabelSettings_face"]
-font_size = 56

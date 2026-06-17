@@ -1,26 +1,26 @@
 [
   {
     "id": "reference_manager",
-    "name": "참고만 할게요 과장",
+    "name": "Ref Manager",
     "hp": 60,
-    "quote": "자료만 받아볼게요.",
+    "quote": "Just for reference...",
     "reward": 30,
-    "emoji": "😤"
+    "face": "(-_-)"
   },
   {
     "id": "simple_fancy_leader",
-    "name": "심플화려 팀장",
+    "name": "Team Leader",
     "hp": 100,
-    "quote": "심플한데 화려하게요.",
+    "quote": "Make it simple but fancy.",
     "reward": 50,
-    "emoji": "🤵"
+    "face": "(>_<)"
   },
   {
     "id": "internal_review_director",
-    "name": "내부검토 부장",
+    "name": "Director",
     "hp": 150,
-    "quote": "내부 검토 중입니다.",
+    "quote": "Under internal review.",
     "reward": 80,
-    "emoji": "📋"
+    "face": "(-.-)"
   }
 ]

@@ -100,9 +100,9 @@ func _increment_combo(is_critical: bool) -> void:
 	_combo_timer = 2.5
 	battle_ui.update_combo(_combo)
 	if _combo == 10:
-		battle_ui.show_combo_text("참교육!")
+		battle_ui.show_combo_text("JUSTICE!")
 	elif _combo == 20:
-		battle_ui.show_combo_text("노답분쇄!")
+		battle_ui.show_combo_text("UNSTOPPABLE!")
 
 func _break_combo() -> void:
 	if _combo > 0:
@@ -171,6 +171,6 @@ func _start_boss_phase() -> void:
 	_current_enemy.defeated.connect(_on_boss_defeated)
 	_current_enemy.pattern_result.connect(_on_boss_pattern_result)
 	player.attacked.connect(_on_player_attacked)
-	battle_ui.set_enemy_name("검토만 3년째 본부장")
+	battle_ui.set_enemy_name("THE BOSS")
 	battle_ui.update_enemy_hp(500, 500)
 	AudioManager.play_bgm("bgm_boss")

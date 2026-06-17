@@ -1,7 +1,7 @@
 [
   {
     "id": "slow_quote",
-    "quote": "이거 5분이면 되죠?",
+    "quote": "This takes 5 minutes, right?",
     "charge_time": 2.0,
     "perfect_window": 0.2,
     "good_window": 0.45,
@@ -9,7 +9,7 @@
   },
   {
     "id": "fast_quote",
-    "quote": "오늘 안에 가능하시죠?",
+    "quote": "Can you finish today?",
     "charge_time": 1.2,
     "perfect_window": 0.15,
     "good_window": 0.35,
@@ -17,14 +17,14 @@
   },
   {
     "id": "fake_quote",
-    "quote": "참고만 할게요.",
+    "quote": "Just for reference.",
     "charge_time": 1.5,
     "is_fake": true,
     "damage": 0
   },
   {
     "id": "double_quote",
-    "quote": "수정 한 번만 더요.",
+    "quote": "Just one more revision.",
     "charge_time": 1.4,
     "repeat": 2,
     "perfect_window": 0.15,

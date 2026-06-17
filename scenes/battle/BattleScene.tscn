@@ -1,10 +1,18 @@
-[gd_scene format=3 uid="uid://battle_scene"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/battle/BattleController.gd" id="1_bc"]
 [ext_resource type="Script" path="res://scripts/ui/BattleUI.gd" id="2_bui"]
 [ext_resource type="Script" path="res://scripts/feedback/CameraShake.gd" id="3_cam"]
 [ext_resource type="Script" path="res://scripts/feedback/HitFeedbackManager.gd" id="4_hfm"]
 [ext_resource type="PackedScene" path="res://scenes/battle/Player.tscn" id="5_player"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_combo"]
+font_size = 28
+font_color = Color(1, 1, 0.4, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_judgment"]
+font_size = 52
+font_color = Color(1, 1, 1, 1)
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_bc")
@@ -35,7 +43,7 @@ position = Vector2(8, 8)
 size = Vector2(374, 60)
 
 [node name="EnemyNameLabel" type="Label" parent="BattleUI/TopBar"]
-text = ""
+text = "Enemy"
 size_flags_horizontal = 3
 
 [node name="EnemyHPBar" type="ProgressBar" parent="BattleUI/TopBar"]
@@ -48,6 +56,9 @@ show_percentage = false
 [node name="WeaponLevelLabel" type="Label" parent="BattleUI/TopBar"]
 text = "Lv.1"
 
+[node name="GoldLabel" type="Label" parent="BattleUI/TopBar"]
+text = "G:0"
+
 [node name="PlayerHPBar" type="ProgressBar" parent="BattleUI"]
 position = Vector2(8, 72)
 size = Vector2(374, 16)
@@ -55,27 +66,18 @@ max_value = 100
 value = 100
 show_percentage = false
 
-[node name="GoldLabel" type="Label" parent="BattleUI/TopBar"]
-text = "💰 0"
-
 [node name="ComboLabel" type="Label" parent="BattleUI"]
 visible = false
-position = Vector2(195, 680)
-text = "0 콤보"
+position = Vector2(120, 680)
+size = Vector2(150, 40)
+text = "0 combo"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 label_settings = SubResource("LabelSettings_combo")
 
 [node name="JudgmentLabel" type="Label" parent="BattleUI"]
 visible = false
-position = Vector2(195, 400)
+position = Vector2(80, 380)
+size = Vector2(230, 80)
 text = "PERFECT!"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 label_settings = SubResource("LabelSettings_judgment")
-
-[sub_resource type="LabelSettings" id="LabelSettings_combo"]
-font_size = 28
-font_color = Color(1, 1, 0.4, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_judgment"]
-font_size = 52
-font_color = Color(1, 1, 1, 1)

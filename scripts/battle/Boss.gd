@@ -50,12 +50,12 @@ func take_damage(amount: int, is_critical: bool) -> void:
 		_on_defeated()
 
 func _play_hit_reaction(is_critical: bool) -> void:
-	face_label.text = "🤯" if is_critical else "😵"
+	face_label.text = "(*_*)" if is_critical else "(x_x)"
 	var tween := create_tween()
 	tween.tween_property(body, "scale", Vector2(1.2, 0.85), 0.05)
 	tween.tween_property(body, "scale", Vector2(1.0, 1.0), 0.1)
 	var t := get_tree().create_timer(0.3)
-	t.timeout.connect(func(): face_label.text = "😠")
+	t.timeout.connect(func(): face_label.text = ">:(")
 
 func _start_random_pattern() -> void:
 	if _patterns.is_empty():
@@ -154,6 +154,6 @@ func _on_defeated() -> void:
 	pattern_timer.stop()
 	_is_charging = false
 	quote_bubble.visible = false
-	face_label.text = "💀"
+	face_label.text = "(RIP)"
 	HapticManager.vibrate_sequence([80, 80, 150])
 	defeated.emit()

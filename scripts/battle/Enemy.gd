@@ -10,14 +10,14 @@ signal defeated()
 var max_hp: int = 100
 var current_hp: int = 100
 var enemy_data: Dictionary = {}
-var _normal_emoji: String = "😐"
+var _normal_face: String = "(-_-)"
 
 func setup(data: Dictionary) -> void:
 	enemy_data = data
 	max_hp = data.get("hp", 100)
 	current_hp = max_hp
-	_normal_emoji = data.get("emoji", "😐")
-	face_label.text = _normal_emoji
+	_normal_face = data.get("face", "(-_-)")
+	face_label.text = _normal_face
 	quote_label.text = data.get("quote", "")
 	hp_changed.emit(current_hp, max_hp)
 
@@ -29,7 +29,7 @@ func take_damage(amount: int, is_critical: bool) -> void:
 		defeated.emit()
 
 func _play_hit_reaction(is_critical: bool) -> void:
-	face_label.text = "🤯" if is_critical else "😵"
+	face_label.text = "(*_*)" if is_critical else "(x_x)"
 	_knockback()
 	_squash_stretch(is_critical)
 	var t := get_tree().create_timer(0.3)
@@ -49,7 +49,7 @@ func _squash_stretch(is_critical: bool) -> void:
 	tween.tween_property(body, "scale", Vector2(1.0, 1.0), 0.1)
 
 func _restore_face() -> void:
-	face_label.text = _normal_emoji
+	face_label.text = _normal_face
 
 func show_defeat_reaction() -> void:
-	face_label.text = "💀"
+	face_label.text = "(RIP)"

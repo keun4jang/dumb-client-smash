@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://result_screen"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/ResultScreen.gd" id="1_rs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 32
+font_color = Color(1, 0.9, 0.2, 1)
 
 [node name="ResultScreen" type="Control"]
 anchor_right = 1.0
@@ -21,12 +25,12 @@ position = Vector2(20, 30)
 size = Vector2(260, 340)
 
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
-text = "스테이지 클리어!"
+text = "Stage Clear!"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 label_settings = SubResource("LabelSettings_title")
 
 [node name="GoldLabel" type="Label" parent="Panel/VBox"]
-text = "획득: 💰 0"
+text = "Gold: 0"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
 [node name="Spacer" type="Control" parent="Panel/VBox"]
@@ -34,12 +38,8 @@ custom_minimum_size = Vector2(0, 20)
 
 [node name="NextButton" type="Button" parent="Panel/VBox"]
 custom_minimum_size = Vector2(0, 60)
-text = "다시 하기"
+text = "Play Again"
 
 [node name="MenuButton" type="Button" parent="Panel/VBox"]
 custom_minimum_size = Vector2(0, 60)
-text = "메인 메뉴"
-
-[sub_resource type="LabelSettings" id="LabelSettings_title"]
-font_size = 32
-font_color = Color(1, 0.9, 0.2, 1)
+text = "Main Menu"

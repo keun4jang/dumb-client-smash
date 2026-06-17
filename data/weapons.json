@@ -1,0 +1,52 @@
+[
+  {
+    "level": 1,
+    "name": "돌돌 만 견적서",
+    "attack": 10,
+    "critical": 20,
+    "scale": 1.0,
+    "color": "#ffffff",
+    "hit_sfx_group": "light",
+    "vibration_ms": 30
+  },
+  {
+    "level": 2,
+    "name": "두꺼운 계약서",
+    "attack": 15,
+    "critical": 30,
+    "scale": 1.2,
+    "color": "#f4e3b2",
+    "hit_sfx_group": "medium",
+    "vibration_ms": 40
+  },
+  {
+    "level": 3,
+    "name": "야근 키보드",
+    "attack": 22,
+    "critical": 44,
+    "scale": 1.4,
+    "color": "#b8d8ff",
+    "hit_sfx_group": "keyboard",
+    "vibration_ms": 50
+  },
+  {
+    "level": 4,
+    "name": "회의록 해머",
+    "attack": 32,
+    "critical": 64,
+    "scale": 1.7,
+    "color": "#ffb347",
+    "hit_sfx_group": "heavy",
+    "vibration_ms": 70
+  },
+  {
+    "level": 5,
+    "name": "갑질분쇄 빠따",
+    "attack": 45,
+    "critical": 90,
+    "scale": 2.0,
+    "color": "#ff3333",
+    "hit_sfx_group": "critical",
+    "vibration_ms": 90
+  }
+]

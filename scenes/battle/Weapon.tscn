@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://weapon"]
+
+[ext_resource type="Script" path="res://scripts/battle/Weapon.gd" id="1_weapon"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_weapon")
+
+[node name="Body" type="ColorRect" parent="."]
+color = Color(1, 1, 1, 1)
+size = Vector2(20, 80)
+position = Vector2(-10, -80)
+
+[node name="Trail" type="ColorRect" parent="."]
+visible = false
+color = Color(1, 1, 1, 0.4)
+size = Vector2(20, 80)
+position = Vector2(-10, -80)

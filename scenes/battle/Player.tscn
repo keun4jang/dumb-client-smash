@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://player"]
+
+[ext_resource type="Script" path="res://scripts/battle/Player.gd" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/battle/Weapon.tscn" id="2_weapon"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_player")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="Weapon" parent="WeaponPivot" instance=ExtResource("2_weapon")]
+position = Vector2(0, 0)

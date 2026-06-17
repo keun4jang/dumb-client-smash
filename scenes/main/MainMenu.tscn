@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://main_menu"]
+
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_mm"]
+[ext_resource type="Script" path="res://scripts/ui/UpgradeScreen.gd" id="2_up"]
+[ext_resource type="Script" path="res://scripts/ui/SettingsScreen.gd" id="3_ss"]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_mm")
+
+[node name="Background" type="ColorRect" parent="."]
+color = Color(0.1, 0.1, 0.18, 1)
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="."]
+position = Vector2(0, 120)
+size = Vector2(390, 80)
+text = "멍청한 거래처 줘패기"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Subtitle" type="Label" parent="."]
+position = Vector2(0, 210)
+size = Vector2(390, 40)
+text = "스트레스 해소 게임"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+label_settings = SubResource("LabelSettings_subtitle")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+position = Vector2(95, 320)
+size = Vector2(200, 220)
+
+[node name="StartButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(200, 60)
+text = "▶ 시작하기"
+
+[node name="UpgradeButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(200, 60)
+text = "⚔ 무기 강화"
+
+[node name="SettingsButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(200, 60)
+text = "⚙ 설정"
+
+[node name="GoldLabel" type="Label" parent="."]
+position = Vector2(270, 20)
+size = Vector2(110, 40)
+text = "💰 0"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+
+[node name="WeaponLabel" type="Label" parent="."]
+position = Vector2(10, 20)
+size = Vector2(250, 40)
+text = "무기: 돌돌 만 견적서 (Lv.1)"
+
+[node name="UpgradeScreen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_up")
+
+[node name="Panel" type="Panel" parent="UpgradeScreen"]
+position = Vector2(20, 120)
+size = Vector2(350, 500)
+
+[node name="GoldLabel" type="Label" parent="UpgradeScreen/Panel"]
+position = Vector2(10, 10)
+size = Vector2(330, 40)
+text = "💰 0"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+
+[node name="VBox" type="VBoxContainer" parent="UpgradeScreen/Panel"]
+position = Vector2(20, 60)
+size = Vector2(310, 400)
+
+[node name="CurrentWeaponLabel" type="Label" parent="UpgradeScreen/Panel/VBox"]
+text = "현재 무기"
+
+[node name="NextWeaponLabel" type="Label" parent="UpgradeScreen/Panel/VBox"]
+text = "다음 무기"
+
+[node name="CostLabel" type="Label" parent="UpgradeScreen/Panel/VBox"]
+text = "강화 비용: -"
+
+[node name="UpgradeButton" type="Button" parent="UpgradeScreen/Panel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+text = "업그레이드"
+
+[node name="CloseButton" type="Button" parent="UpgradeScreen/Panel/VBox"]
+custom_minimum_size = Vector2(0, 50)
+text = "닫기"
+
+[node name="SettingsScreen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_ss")
+
+[node name="Panel" type="Panel" parent="SettingsScreen"]
+position = Vector2(20, 150)
+size = Vector2(350, 450)
+
+[node name="VBox" type="VBoxContainer" parent="SettingsScreen/Panel"]
+position = Vector2(20, 20)
+size = Vector2(310, 400)
+
+[node name="SettingsTitle" type="Label" parent="SettingsScreen/Panel/VBox"]
+text = "설정"
+label_settings = SubResource("LabelSettings_subtitle")
+
+[node name="BGMRow" type="HBoxContainer" parent="SettingsScreen/Panel/VBox"]
+
+[node name="BGMLabel" type="Label" parent="SettingsScreen/Panel/VBox/BGMRow"]
+text = "BGM 볼륨  "
+custom_minimum_size = Vector2(100, 0)
+
+[node name="BGMSlider" type="HSlider" parent="SettingsScreen/Panel/VBox/BGMRow"]
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 0.8
+size_flags_horizontal = 3
+
+[node name="SFXRow" type="HBoxContainer" parent="SettingsScreen/Panel/VBox"]
+
+[node name="SFXLabel" type="Label" parent="SettingsScreen/Panel/VBox/SFXRow"]
+text = "SFX 볼륨  "
+custom_minimum_size = Vector2(100, 0)
+
+[node name="SFXSlider" type="HSlider" parent="SettingsScreen/Panel/VBox/SFXRow"]
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+size_flags_horizontal = 3
+
+[node name="VibrationCheck" type="CheckButton" parent="SettingsScreen/Panel/VBox"]
+button_pressed = true
+text = "진동"
+
+[node name="BackButton" type="Button" parent="SettingsScreen/Panel/VBox"]
+custom_minimum_size = Vector2(0, 50)
+text = "뒤로"
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 32
+font_color = Color(1, 0.9, 0.3, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 20
+font_color = Color(0.8, 0.8, 0.8, 1)

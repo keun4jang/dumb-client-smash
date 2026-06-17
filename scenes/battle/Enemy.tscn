@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://enemy"]
+
+[ext_resource type="Script" path="res://scripts/battle/Enemy.gd" id="1_enemy"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_enemy")
+
+[node name="Body" type="ColorRect" parent="."]
+color = Color(0.4, 0.6, 1.0, 1)
+size = Vector2(120, 160)
+position = Vector2(-60, -160)
+
+[node name="FaceLabel" type="Label" parent="."]
+position = Vector2(-30, -130)
+text = "😐"
+label_settings = SubResource("LabelSettings_face")
+
+[node name="QuoteLabel" type="Label" parent="."]
+position = Vector2(-80, -200)
+size = Vector2(160, 40)
+text = ""
+horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+autowrap_mode = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_face"]
+font_size = 48

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "reference_manager",
+    "name": "참고만 할게요 과장",
+    "hp": 60,
+    "quote": "자료만 받아볼게요.",
+    "reward": 30,
+    "emoji": "😤"
+  },
+  {
+    "id": "simple_fancy_leader",
+    "name": "심플화려 팀장",
+    "hp": 100,
+    "quote": "심플한데 화려하게요.",
+    "reward": 50,
+    "emoji": "🤵"
+  },
+  {
+    "id": "internal_review_director",
+    "name": "내부검토 부장",
+    "hp": 150,
+    "quote": "내부 검토 중입니다.",
+    "reward": 80,
+    "emoji": "📋"
+  }
+]

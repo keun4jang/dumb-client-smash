@@ -1,4 +1,5 @@
 extends Camera2D
+class_name CameraShake
 
 var _shake_tween: Tween
 var _base_offset := Vector2.ZERO

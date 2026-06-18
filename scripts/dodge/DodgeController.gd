@@ -169,6 +169,10 @@ func _check_hit(nd: ColorRect, pw: float) -> bool:
 func _die() -> void:
 	_alive = false
 	player_visual.visible = false
+	for info in _labels:
+		(info["node"] as Node).queue_free()
+	_labels.clear()
+	$Background.visible = false
 	$GameOverScreen.visible = true
 	$GameOverScreen.show_result(_elapsed)
 

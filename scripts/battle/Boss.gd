@@ -6,8 +6,7 @@ signal defeated()
 signal pattern_started(pattern: Dictionary)
 signal pattern_result(result: String, damage_taken: int)
 
-@onready var body: ColorRect = $Body
-@onready var face_label: Label = $FaceLabel
+@onready var visual: Node2D = $Visual
 @onready var quote_bubble: Panel = $QuoteBubble
 @onready var quote_label: Label = $QuoteBubble/QuoteLabel
 @onready var charge_bar: ProgressBar = $QuoteBubble/ChargeBar
@@ -52,12 +51,12 @@ func take_damage(amount: int, is_critical: bool) -> void:
 		_on_defeated()
 
 func _play_hit_reaction(is_critical: bool) -> void:
-	face_label.text = "(*_*)" if is_critical else "(x_x)"
+	visual.face_state = "hit"
 	var tween := create_tween()
-	tween.tween_property(body, "scale", Vector2(1.2, 0.85), 0.05)
-	tween.tween_property(body, "scale", Vector2(1.0, 1.0), 0.1)
+	tween.tween_property(visual, "scale", Vector2(1.2, 0.85), 0.05)
+	tween.tween_property(visual, "scale", Vector2(1.0, 1.0), 0.1)
 	var t := get_tree().create_timer(0.3)
-	t.timeout.connect(func(): face_label.text = ">:(")
+	t.timeout.connect(func(): visual.face_state = "idle")
 
 func _start_random_pattern() -> void:
 	if _patterns.is_empty():
@@ -71,6 +70,7 @@ func _start_random_pattern() -> void:
 	quote_label.text = _active_pattern.get("quote", "...")
 	charge_bar.value = 0
 	quote_bubble.visible = true
+	visual.face_state = "charging"
 	pattern_started.emit(_active_pattern)
 
 func on_player_block_start() -> void:
@@ -84,6 +84,7 @@ func on_player_block_release() -> void:
 func _resolve_pattern() -> void:
 	_is_charging = false
 	quote_bubble.visible = false
+	visual.face_state = "idle"
 	var charge_time: float = _active_pattern.get("charge_time", 2.0)
 	var is_fake: bool = _active_pattern.get("is_fake", false)
 	var damage: int = _active_pattern.get("damage", 20)
@@ -156,6 +157,6 @@ func _on_defeated() -> void:
 	pattern_timer.stop()
 	_is_charging = false
 	quote_bubble.visible = false
-	face_label.text = "(RIP)"
+	visual.face_state = "defeat"
 	HapticManager.vibrate_sequence([80, 80, 150])
 	defeated.emit()

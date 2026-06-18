@@ -33,7 +33,7 @@ func _draw() -> void:
 		Vector2(-22, -58), Vector2(22, -58),
 		Vector2(26, -112), Vector2(-26, -112)
 	])
-	draw_polygon(suit, PackedColorArray([C_SUIT]*4))
+	draw_polygon(suit, PackedColorArray([C_SUIT]))
 
 	# lapels
 	var lpl := PackedVector2Array([
@@ -42,20 +42,20 @@ func _draw() -> void:
 	var lpr := PackedVector2Array([
 		Vector2(0, -112), Vector2( 13, -112), Vector2( 22, -91), Vector2( 5, -80)
 	])
-	draw_polygon(lpl, PackedColorArray([C_SHIRT]*4))
-	draw_polygon(lpr, PackedColorArray([C_SHIRT]*4))
+	draw_polygon(lpl, PackedColorArray([C_SHIRT]))
+	draw_polygon(lpr, PackedColorArray([C_SHIRT]))
 
 	# --- tie ---
 	var tie := PackedVector2Array([
 		Vector2(-4, -79), Vector2(4, -79),
 		Vector2(6, -96), Vector2(3, -111), Vector2(-3, -111), Vector2(-6, -96)
 	])
-	draw_polygon(tie, PackedColorArray([C_TIE]*6))
+	draw_polygon(tie, PackedColorArray([C_TIE]))
 	# knot
 	var knot := PackedVector2Array([
 		Vector2(-5, -111), Vector2(5, -111), Vector2(4, -118), Vector2(-4, -118)
 	])
-	draw_polygon(knot, PackedColorArray([C_TIE * Color(0.8,0.8,0.8,1)]*4))
+	draw_polygon(knot, PackedColorArray([C_TIE * Color(0.8,0.8,0.8,1)]))
 
 	# --- arms ---
 	draw_line(Vector2(-26, -108), Vector2(-37, -82), C_SUIT, 11)

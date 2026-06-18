@@ -35,7 +35,7 @@ func _draw() -> void:
 		Vector2(-34, -74), Vector2(34, -74),
 		Vector2(42, -135), Vector2(-42, -135)
 	])
-	draw_polygon(suit, PackedColorArray([C_SUIT]*4))
+	draw_polygon(suit, PackedColorArray([C_SUIT]))
 
 	# shirt & lapels
 	var lpl := PackedVector2Array([
@@ -44,15 +44,15 @@ func _draw() -> void:
 	var lpr := PackedVector2Array([
 		Vector2(0, -135), Vector2( 16, -135), Vector2( 30, -103), Vector2( 8, -86)
 	])
-	draw_polygon(lpl, PackedColorArray([C_SHIRT]*4))
-	draw_polygon(lpr, PackedColorArray([C_SHIRT]*4))
+	draw_polygon(lpl, PackedColorArray([C_SHIRT]))
+	draw_polygon(lpr, PackedColorArray([C_SHIRT]))
 
 	# --- power tie (wide, with stripe pattern) ---
 	var tie := PackedVector2Array([
 		Vector2(-7, -84),  Vector2(7, -84),
 		Vector2(10, -110), Vector2(5, -133), Vector2(-5, -133), Vector2(-10, -110)
 	])
-	draw_polygon(tie, PackedColorArray([C_TIE]*6))
+	draw_polygon(tie, PackedColorArray([C_TIE]))
 	# stripe details
 	for i in 3:
 		var yy := -95.0 - i * 11.0
@@ -61,7 +61,7 @@ func _draw() -> void:
 	var knot := PackedVector2Array([
 		Vector2(-7, -133), Vector2(7, -133), Vector2(5, -142), Vector2(-5, -142)
 	])
-	draw_polygon(knot, PackedColorArray([C_TIE * Color(0.82,0.82,0.82,1)]*4))
+	draw_polygon(knot, PackedColorArray([C_TIE * Color(0.82,0.82,0.82,1)]))
 
 	# cufflinks detail
 	draw_circle(Vector2(-48, -68), 5, C_GOLD)

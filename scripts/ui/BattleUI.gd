@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var enemy_hp_bar: ProgressBar = $TopBar/EnemyHPBar
-@onready var player_hp_bar: ProgressBar = $TopBar/PlayerHPBar
+@onready var player_hp_bar: ProgressBar = $PlayerHPBar
 @onready var enemy_name_label: Label = $TopBar/EnemyNameLabel
 @onready var gold_label: Label = $TopBar/GoldLabel
 @onready var combo_label: Label = $ComboLabel

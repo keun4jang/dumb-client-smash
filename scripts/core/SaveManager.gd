@@ -27,6 +27,34 @@ func save_settings(bgm_vol: float, sfx_vol: float, vibration: bool) -> void:
 	cfg.set_value("settings", "vibration", vibration)
 	cfg.save(SAVE_PATH)
 
+func save_score(player_name: String, score: float) -> void:
+	var scores: Array = load_scores()
+	scores.append({"name": player_name, "score": score})
+	scores.sort_custom(func(a, b): return a["score"] > b["score"])
+	if scores.size() > 10:
+		scores.resize(10)
+	var cfg := ConfigFile.new()
+	cfg.load(SAVE_PATH)
+	for i in scores.size():
+		cfg.set_value("scores", "name_%d" % i, scores[i]["name"])
+		cfg.set_value("scores", "score_%d" % i, scores[i]["score"])
+	cfg.set_value("scores", "count", scores.size())
+	cfg.save(SAVE_PATH)
+
+
+func load_scores() -> Array:
+	var cfg := ConfigFile.new()
+	cfg.load(SAVE_PATH)
+	var count: int = cfg.get_value("scores", "count", 0)
+	var result: Array = []
+	for i in count:
+		result.append({
+			"name": cfg.get_value("scores", "name_%d" % i, "?"),
+			"score": cfg.get_value("scores", "score_%d" % i, 0.0),
+		})
+	return result
+
+
 func load_settings() -> Dictionary:
 	var cfg := ConfigFile.new()
 	cfg.load(SAVE_PATH)

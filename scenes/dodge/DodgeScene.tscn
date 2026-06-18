@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dodge/DodgeController.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/dodge/PlayerDodge.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/ui/GameOverScreen.gd" id="3"]
+
+[node name="DodgeScene" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+color = Color(0.07, 0.07, 0.14, 1)
+position = Vector2(0, 0)
+size = Vector2(390, 844)
+
+[node name="PlayerVisual" type="Node2D" parent="."]
+position = Vector2(195, 720)
+script = ExtResource("2")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+position = Vector2(10, 10)
+size = Vector2(370, 40)
+text = "생존: 0.0초"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 0.3, 1)
+
+[node name="HintLabel" type="Label" parent="HUD"]
+position = Vector2(10, 800)
+size = Vector2(370, 36)
+text = "← → 키 또는 터치로 이동"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="GameOverScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+script = ExtResource("3")
+
+[node name="Bg" type="ColorRect" parent="GameOverScreen"]
+color = Color(0, 0, 0, 0.82)
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="GameOverScreen"]
+position = Vector2(20, 80)
+size = Vector2(350, 680)
+
+[node name="VBox" type="VBoxContainer" parent="GameOverScreen/Panel"]
+position = Vector2(16, 16)
+size = Vector2(318, 648)
+
+[node name="Title" type="Label" parent="GameOverScreen/Panel/VBox"]
+text = "게임 오버"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.9, 0.1, 0.1, 1)
+
+[node name="ScoreLabel" type="Label" parent="GameOverScreen/Panel/VBox"]
+text = "생존 시간: 0.0초"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="Sep1" type="HSeparator" parent="GameOverScreen/Panel/VBox"]
+
+[node name="LeaderboardLabel" type="Label" parent="GameOverScreen/Panel/VBox"]
+text = "=== 역대 기록 ==="
+custom_minimum_size = Vector2(0, 220)
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 15
+
+[node name="Sep2" type="HSeparator" parent="GameOverScreen/Panel/VBox"]
+
+[node name="NameHint" type="Label" parent="GameOverScreen/Panel/VBox"]
+text = "이름을 입력하세요"
+horizontal_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="GameOverScreen/Panel/VBox"]
+placeholder_text = "닉네임"
+max_length = 12
+custom_minimum_size = Vector2(0, 50)
+
+[node name="SubmitButton" type="Button" parent="GameOverScreen/Panel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+text = "기록 등록 & 메인으로"

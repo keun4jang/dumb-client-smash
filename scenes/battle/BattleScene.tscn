@@ -1,21 +1,21 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/battle/BattleController.gd" id="1_bc"]
-[ext_resource type="Script" path="res://scripts/ui/BattleUI.gd" id="2_bui"]
-[ext_resource type="Script" path="res://scripts/feedback/CameraShake.gd" id="3_cam"]
-[ext_resource type="Script" path="res://scripts/feedback/HitFeedbackManager.gd" id="4_hfm"]
-[ext_resource type="PackedScene" path="res://scenes/battle/Player.tscn" id="5_player"]
+[ext_resource type="Script" path="res://scripts/battle/BattleController.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/BattleUI.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/feedback/CameraShake.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/feedback/HitFeedbackManager.gd" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/battle/Player.tscn" id="5"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_combo"]
+[sub_resource type="LabelSettings" id="1"]
 font_size = 28
 font_color = Color(1, 1, 0.4, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_judgment"]
+[sub_resource type="LabelSettings" id="2"]
 font_size = 52
 font_color = Color(1, 1, 1, 1)
 
 [node name="BattleScene" type="Node2D"]
-script = ExtResource("1_bc")
+script = ExtResource("1")
 
 [node name="Background" type="ColorRect" parent="."]
 color = Color(0.1, 0.1, 0.18, 1)
@@ -25,18 +25,18 @@ z_index = -1
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("5_player")]
+[node name="Player" parent="." instance=ExtResource("5")]
 position = Vector2(80, 580)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_cam")
+script = ExtResource("3")
 position = Vector2(195, 422)
 
 [node name="HitFeedbackManager" type="Node" parent="."]
-script = ExtResource("4_hfm")
+script = ExtResource("4")
 
 [node name="BattleUI" type="CanvasLayer" parent="."]
-script = ExtResource("2_bui")
+script = ExtResource("2")
 
 [node name="TopBar" type="HBoxContainer" parent="BattleUI"]
 position = Vector2(8, 8)
@@ -72,7 +72,7 @@ position = Vector2(120, 680)
 size = Vector2(150, 40)
 text = "0 combo"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("LabelSettings_combo")
+label_settings = SubResource("1")
 
 [node name="JudgmentLabel" type="Label" parent="BattleUI"]
 visible = false
@@ -80,4 +80,4 @@ position = Vector2(80, 380)
 size = Vector2(230, 80)
 text = "PERFECT!"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("LabelSettings_judgment")
+label_settings = SubResource("2")

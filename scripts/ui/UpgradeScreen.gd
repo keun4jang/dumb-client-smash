@@ -17,11 +17,11 @@ func _ready() -> void:
 func refresh() -> void:
 	var level := GameManager.weapon_level
 	var current := GameManager.get_current_weapon()
-	current_weapon_label.text = "현재: " + current.get("name", "?") + "\n공격력: " + str(current.get("attack", 0))
-	gold_label.text = "💰 " + str(GameManager.gold)
+	current_weapon_label.text = "Now: " + current.get("name", "?") + "\nATK: " + str(current.get("attack", 0))
+	gold_label.text = "Gold: " + str(GameManager.gold)
 
 	if level >= 5:
-		next_weapon_label.text = "최대 레벨 달성!"
+		next_weapon_label.text = "MAX LEVEL!"
 		cost_label.text = ""
 		upgrade_button.disabled = true
 		return
@@ -34,8 +34,8 @@ func refresh() -> void:
 			next = w
 			break
 
-	next_weapon_label.text = "다음: " + next.get("name", "?") + "\n공격력: " + str(next.get("attack", 0))
-	cost_label.text = "강화 비용: " + str(cost) + " 💰"
+	next_weapon_label.text = "Next: " + next.get("name", "?") + "\nATK: " + str(next.get("attack", 0))
+	cost_label.text = "Cost: " + str(cost) + " G"
 	upgrade_button.disabled = not GameManager.can_upgrade()
 
 func _on_upgrade() -> void:

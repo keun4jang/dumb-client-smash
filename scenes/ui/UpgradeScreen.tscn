@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/UpgradeScreen.gd" id="1_up"]
+
+[node name="UpgradeScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_up")
+
+[node name="Background" type="ColorRect" parent="."]
+color = Color(0, 0, 0, 0.7)
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+position = Vector2(20, 100)
+size = Vector2(350, 550)
+
+[node name="GoldLabel" type="Label" parent="Panel"]
+position = Vector2(10, 10)
+size = Vector2(330, 36)
+text = "Gold: 0"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+position = Vector2(20, 55)
+size = Vector2(310, 460)
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox"]
+text = "Weapon Upgrade"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+[node name="Separator1" type="HSeparator" parent="Panel/VBox"]
+
+[node name="CurrentWeaponLabel" type="Label" parent="Panel/VBox"]
+text = "Now: -"
+autowrap_mode = 3
+
+[node name="NextWeaponLabel" type="Label" parent="Panel/VBox"]
+text = "Next: -"
+autowrap_mode = 3
+
+[node name="CostLabel" type="Label" parent="Panel/VBox"]
+text = "Cost: -"
+
+[node name="Spacer" type="Control" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 20)
+
+[node name="UpgradeButton" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+text = "Upgrade"
+
+[node name="CloseButton" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 50)
+text = "Close"

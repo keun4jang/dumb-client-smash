@@ -8,8 +8,8 @@ extends Control
 func _ready() -> void:
 	next_button.pressed.connect(_on_next)
 	menu_button.pressed.connect(_on_menu)
-	title_label.text = "스테이지 클리어!"
-	gold_label.text = "획득: 💰 " + str(GameManager.gold)
+	title_label.text = "Stage Clear!"
+	gold_label.text = "Gold: " + str(GameManager.gold)
 
 func _on_next() -> void:
 	StageManager.reset()

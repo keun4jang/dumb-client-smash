@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/SettingsScreen.gd" id="1_ss"]
+
+[node name="SettingsScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_ss")
+
+[node name="Background" type="ColorRect" parent="."]
+color = Color(0, 0, 0, 0.7)
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+position = Vector2(20, 150)
+size = Vector2(350, 450)
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+position = Vector2(20, 20)
+size = Vector2(310, 410)
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox"]
+text = "Settings"
+horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+[node name="Separator1" type="HSeparator" parent="Panel/VBox"]
+
+[node name="BGMRow" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="BGMLabel" type="Label" parent="Panel/VBox/BGMRow"]
+text = "BGM"
+custom_minimum_size = Vector2(80, 0)
+
+[node name="BGMSlider" type="HSlider" parent="Panel/VBox/BGMRow"]
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 0.8
+size_flags_horizontal = 3
+
+[node name="SFXRow" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="SFXLabel" type="Label" parent="Panel/VBox/SFXRow"]
+text = "SFX"
+custom_minimum_size = Vector2(80, 0)
+
+[node name="SFXSlider" type="HSlider" parent="Panel/VBox/SFXRow"]
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+size_flags_horizontal = 3
+
+[node name="VibrationCheck" type="CheckButton" parent="Panel/VBox"]
+button_pressed = true
+text = "Vibration"
+
+[node name="Spacer" type="Control" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 20)
+
+[node name="BackButton" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 50)
+text = "Back"

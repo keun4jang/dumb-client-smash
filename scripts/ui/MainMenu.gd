@@ -19,15 +19,15 @@ func _ready() -> void:
 	AudioManager.play_bgm("bgm_office")
 
 func _refresh_display() -> void:
-	gold_label.text = "💰 " + str(GameManager.gold)
+	gold_label.text = "Gold: " + str(GameManager.gold)
 	var weapon := GameManager.get_current_weapon()
-	weapon_label.text = "무기: " + weapon.get("name", "?") + " (Lv." + str(GameManager.weapon_level) + ")"
+	weapon_label.text = weapon.get("name", "?") + " (Lv." + str(GameManager.weapon_level) + ")"
 
 func _on_gold_changed(new_gold: int) -> void:
-	gold_label.text = "💰 " + str(new_gold)
+	gold_label.text = "Gold: " + str(new_gold)
 
 func _on_weapon_upgraded(weapon_data: Dictionary) -> void:
-	weapon_label.text = "무기: " + weapon_data.get("name", "?") + " (Lv." + str(GameManager.weapon_level) + ")"
+	weapon_label.text = weapon_data.get("name", "?") + " (Lv." + str(GameManager.weapon_level) + ")"
 
 func _on_start() -> void:
 	AudioManager.stop_bgm()

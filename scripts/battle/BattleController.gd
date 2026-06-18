@@ -20,7 +20,6 @@ var _player_hp: int = PLAYER_MENTAL_HP
 var _combo: int = 0
 var _combo_timer: float = 0.0
 var _total_gold: int = 0
-var _holding: bool = false
 var _hit_stop_active: bool = false
 
 func _ready() -> void:
@@ -47,25 +46,21 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			_holding = true
 			if _is_boss_phase and _current_enemy:
 				(_current_enemy as Boss).on_player_block_start()
 			else:
 				_attack(event.position)
 		else:
-			_holding = false
 			if _is_boss_phase and _current_enemy:
 				(_current_enemy as Boss).on_player_block_release()
 
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			_holding = true
 			if _is_boss_phase and _current_enemy:
 				(_current_enemy as Boss).on_player_block_start()
 			else:
 				_attack(event.position)
 		else:
-			_holding = false
 			if _is_boss_phase and _current_enemy:
 				(_current_enemy as Boss).on_player_block_release()
 
@@ -83,7 +78,7 @@ func _on_player_attacked(damage: int, is_critical: bool, hit_pos: Vector2) -> vo
 
 	hit_feedback.play_hit(hit_pos, is_critical, GameManager.weapon_level)
 	hit_feedback.spawn_damage_text(hit_pos, damage, is_critical)
-	_increment_combo(is_critical)
+	_increment_combo()
 	await _apply_hit_stop(is_critical)
 
 func _apply_hit_stop(is_critical: bool) -> void:
@@ -95,7 +90,7 @@ func _apply_hit_stop(is_critical: bool) -> void:
 	Engine.time_scale = 1.0
 	_hit_stop_active = false
 
-func _increment_combo(_is_critical: bool) -> void:
+func _increment_combo() -> void:
 	_combo += 1
 	_combo_timer = 2.5
 	battle_ui.update_combo(_combo)

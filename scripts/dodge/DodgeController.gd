@@ -40,7 +40,7 @@ const TYPE_COLOR := [
 	Color(0.7, 0.2, 1.0),    # 2 wide   - purple
 	Color(0.9, 0.1, 0.05),   # 3 danger - red
 ]
-const TYPE_SPEED := [175.0, 310.0, 130.0, 380.0]
+const TYPE_SPEED := [280.0, 460.0, 220.0, 560.0]
 const TYPE_WIDTH := [180.0, 160.0, 270.0, 200.0]
 const TYPE_HEIGHT := 52.0
 
@@ -56,7 +56,7 @@ var _target_x: float = SCREEN_W / 2.0
 var _elapsed: float = 0.0
 var _alive: bool = true
 var _spawn_timer: float = 0.0
-var _spawn_interval: float = 1.6
+var _spawn_interval: float = 1.2
 var _labels: Array = []
 
 @onready var player_visual: Node2D = $PlayerVisual
@@ -105,7 +105,7 @@ func _update_spawn(delta: float) -> void:
 	_spawn_timer -= delta
 	if _spawn_timer <= 0.0:
 		var interval_scale := 1.0 / (1.0 + _elapsed * 0.012)
-		_spawn_interval = clamp(1.6 * interval_scale, 0.45, 1.6)
+		_spawn_interval = clamp(1.2 * interval_scale, 0.30, 1.2)
 		_spawn_timer = _spawn_interval
 		_spawn_phrase()
 		if _elapsed > 20.0 and randf() < 0.4:
@@ -118,7 +118,7 @@ func _spawn_phrase() -> void:
 	var data: Dictionary = PHRASES[randi() % PHRASES.size()]
 	var ptype: int = data["type"]
 	var w: float = TYPE_WIDTH[ptype]
-	var speed_mult := 1.0 + _elapsed * 0.008
+	var speed_mult := 1.0 + _elapsed * 0.014
 	var speed: float = TYPE_SPEED[ptype] * speed_mult
 	var x: float = randf_range(w / 2.0 + 4.0, SCREEN_W - w / 2.0 - 4.0)
 

@@ -2,10 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/ui/ResultScreen.gd" id="1"]
 
-[sub_resource type="LabelSettings" id="1"]
-font_size = 32
-font_color = Color(1, 0.9, 0.2, 1)
-
 [node name="ResultScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,7 +23,8 @@ size = Vector2(260, 340)
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
 text = "Stage Clear!"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("1")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
 
 [node name="GoldLabel" type="Label" parent="Panel/VBox"]
 text = "Gold: 0"

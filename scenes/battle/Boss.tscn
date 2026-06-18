@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/battle/Boss.gd" id="1"]
 
-[sub_resource type="LabelSettings" id="1"]
-font_size = 56
-
 [node name="Boss" type="Node2D"]
 script = ExtResource("1")
 
@@ -16,7 +13,7 @@ position = Vector2(-75, -200)
 [node name="FaceLabel" type="Label" parent="."]
 position = Vector2(-40, -165)
 text = ">:("
-label_settings = SubResource("1")
+theme_override_font_sizes/font_size = 56
 
 [node name="QuoteBubble" type="Panel" parent="."]
 visible = false

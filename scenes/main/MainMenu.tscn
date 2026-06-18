@@ -4,14 +4,6 @@
 [ext_resource type="Script" path="res://scripts/ui/UpgradeScreen.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/ui/SettingsScreen.gd" id="3"]
 
-[sub_resource type="LabelSettings" id="1"]
-font_size = 32
-font_color = Color(1, 0.9, 0.3, 1)
-
-[sub_resource type="LabelSettings" id="2"]
-font_size = 20
-font_color = Color(0.8, 0.8, 0.8, 1)
-
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,14 +19,16 @@ position = Vector2(0, 120)
 size = Vector2(390, 80)
 text = "DUMB CLIENT SMASH"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("1")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 
 [node name="Subtitle" type="Label" parent="."]
 position = Vector2(0, 210)
 size = Vector2(390, 40)
 text = "Stress Relief Game"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("2")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="VBox" type="VBoxContainer" parent="."]
 position = Vector2(95, 320)
@@ -135,7 +129,8 @@ size = Vector2(310, 400)
 
 [node name="SettingsTitle" type="Label" parent="SettingsScreen/Panel/VBox"]
 text = "Settings"
-label_settings = SubResource("2")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="BGMRow" type="HBoxContainer" parent="SettingsScreen/Panel/VBox"]
 

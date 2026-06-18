@@ -34,8 +34,8 @@ func update_player_hp(current: int, max_hp: int) -> void:
 	player_hp_bar.max_value = max_hp
 	player_hp_bar.value = current
 
-func set_enemy_name(name: String) -> void:
-	enemy_name_label.text = name
+func set_enemy_name(enemy_name: String) -> void:
+	enemy_name_label.text = enemy_name
 
 func update_gold(amount: int) -> void:
 	gold_label.text = "💰 " + str(amount)

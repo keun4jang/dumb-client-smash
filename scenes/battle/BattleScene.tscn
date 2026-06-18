@@ -6,14 +6,6 @@
 [ext_resource type="Script" path="res://scripts/feedback/HitFeedbackManager.gd" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/battle/Player.tscn" id="5"]
 
-[sub_resource type="LabelSettings" id="1"]
-font_size = 28
-font_color = Color(1, 1, 0.4, 1)
-
-[sub_resource type="LabelSettings" id="2"]
-font_size = 52
-font_color = Color(1, 1, 1, 1)
-
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1")
 
@@ -72,7 +64,8 @@ position = Vector2(120, 680)
 size = Vector2(150, 40)
 text = "0 combo"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("1")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
 
 [node name="JudgmentLabel" type="Label" parent="BattleUI"]
 visible = false
@@ -80,4 +73,4 @@ position = Vector2(80, 380)
 size = Vector2(230, 80)
 text = "PERFECT!"
 horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-label_settings = SubResource("2")
+theme_override_font_sizes/font_size = 52

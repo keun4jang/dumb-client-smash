@@ -63,6 +63,9 @@ var _phrases: Array = []
 func _ready() -> void:
 	$GameOverScreen.visible = false
 	$GameOverScreen.submitted.connect(_on_score_submitted)
+	$HUD/BackButton.pressed.connect(func():
+		get_tree().change_scene_to_file("res://scenes/main/MainMenu.tscn")
+	)
 
 
 func _process(delta: float) -> void:

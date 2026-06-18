@@ -1,34 +1,65 @@
 [
   {
-    "id": "slow_quote",
-    "quote": "This takes 5 minutes, right?",
+    "id": "five_minutes",
+    "quote": "This takes 5 min, right?",
     "charge_time": 2.0,
     "perfect_window": 0.2,
     "good_window": 0.45,
     "damage": 20
   },
   {
-    "id": "fast_quote",
-    "quote": "Can you finish today?",
+    "id": "finish_today",
+    "quote": "Can you wrap this up today?",
     "charge_time": 1.2,
     "perfect_window": 0.15,
     "good_window": 0.35,
     "damage": 25
   },
   {
-    "id": "fake_quote",
-    "quote": "Just for reference.",
+    "id": "just_reference",
+    "quote": "Ah, just for your reference...",
     "charge_time": 1.5,
     "is_fake": true,
     "damage": 0
   },
   {
-    "id": "double_quote",
-    "quote": "Just one more revision.",
+    "id": "one_more_revision",
+    "quote": "Just one more small tweak.",
     "charge_time": 1.4,
     "repeat": 2,
     "perfect_window": 0.15,
     "good_window": 0.35,
     "damage": 18
+  },
+  {
+    "id": "tonuance",
+    "quote": "The nuance is a bit off...",
+    "charge_time": 1.8,
+    "perfect_window": 0.18,
+    "good_window": 0.40,
+    "damage": 22
+  },
+  {
+    "id": "direction_change",
+    "quote": "Let's change direction.",
+    "charge_time": 1.0,
+    "perfect_window": 0.12,
+    "good_window": 0.28,
+    "damage": 30
+  },
+  {
+    "id": "gut_feeling",
+    "quote": "Something feels off. Redo it.",
+    "charge_time": 1.3,
+    "perfect_window": 0.14,
+    "good_window": 0.32,
+    "damage": 28
+  },
+  {
+    "id": "fake_praise",
+    "quote": "Wow, great work as always!",
+    "charge_time": 1.6,
+    "is_fake": true,
+    "damage": 0
   }
 ]

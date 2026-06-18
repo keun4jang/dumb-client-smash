@@ -3,7 +3,7 @@
     "id": "reference_manager",
     "name": "Ref Manager",
     "hp": 60,
-    "quote": "Just for reference...",
+    "quote": "FYI, just for your reference...",
     "reward": 30,
     "face": "(-_-)"
   },
@@ -11,7 +11,7 @@
     "id": "simple_fancy_leader",
     "name": "Team Leader",
     "hp": 100,
-    "quote": "Make it simple but fancy.",
+    "quote": "Make it simple yet premium.",
     "reward": 50,
     "face": "(>_<)"
   },
@@ -19,7 +19,7 @@
     "id": "internal_review_director",
     "name": "Director",
     "hp": 150,
-    "quote": "Under internal review.",
+    "quote": "Under internal review. Stand by.",
     "reward": 80,
     "face": "(-.-)"
   }

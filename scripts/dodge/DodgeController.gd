@@ -1,36 +1,36 @@
 extends Node2D
 
 const PHRASES := [
-	{"text": "5분만에 되죠?", "type": 0},
-	{"text": "오늘까지 가능하죠?", "type": 1},
-	{"text": "그냥 참고로요...", "type": 0},
-	{"text": "딱 한 번만 더 수정해요.", "type": 0},
-	{"text": "뉘앙스가 좀 달라요.", "type": 2},
-	{"text": "방향을 바꿔봅시다.", "type": 3},
-	{"text": "느낌이 좀 달라요. 다시 해요.", "type": 2},
-	{"text": "고생 많으셨어요~ (또 수정)", "type": 1},
-	{"text": "전략적으로 접근해봐요.", "type": 0},
-	{"text": "심플한데 고급스럽게요.", "type": 2},
-	{"text": "감성이 중요하죠.", "type": 0},
-	{"text": "경쟁사는 이렇게 하던데요.", "type": 1},
-	{"text": "내부 검토 중입니다. 기다려요.", "type": 2},
-	{"text": "이건 제 직감인데...", "type": 3},
-	{"text": "한번 더 보완해봐요.", "type": 0},
-	{"text": "사실 처음부터 다시 하는 게 낫겠어요.", "type": 3},
-	{"text": "이 방향으로 계속 가면 될까요?", "type": 0},
-	{"text": "프리미엄 느낌이 부족해요.", "type": 1},
-	{"text": "MZ세대 감성으로 해봐요.", "type": 1},
-	{"text": "바이럴될 것 같아요?", "type": 0},
-	{"text": "레퍼런스 좀 더 찾아봐요.", "type": 2},
-	{"text": "임팩트가 없어요.", "type": 1},
-	{"text": "트렌디하게 가야죠.", "type": 0},
-	{"text": "이거 ROI가 나올까요?", "type": 2},
-	{"text": "피드백은 월요일에 드릴게요.", "type": 3},
-	{"text": "어제까지 부탁했는데...", "type": 3},
-	{"text": "디테일이 살아야죠.", "type": 0},
-	{"text": "글로벌 감각으로 부탁해요.", "type": 2},
-	{"text": "이거 좀 더 세련되게 해줘요.", "type": 1},
-	{"text": "스토리텔링이 중요해요.", "type": 0},
+	{"text": "5분만에 되죠? ^^", "type": 0},
+	{"text": "오늘까지 가능하죠? ^^", "type": 1},
+	{"text": "그냥 참고로요... ^^", "type": 0},
+	{"text": "딱 한 번만 더 수정해요 ^^", "type": 0},
+	{"text": "뉘앙스가 좀 달라요 ^^", "type": 2},
+	{"text": "방향을 바꿔봅시다 ^^", "type": 3},
+	{"text": "느낌이 좀 달라요. 다시 해요 ^^", "type": 2},
+	{"text": "고생 많으셨어요~ (또 수정) ^^", "type": 1},
+	{"text": "전략적으로 접근해봐요 ^^", "type": 0},
+	{"text": "심플한데 고급스럽게요 ^^", "type": 2},
+	{"text": "감성이 중요하죠 ^^", "type": 0},
+	{"text": "경쟁사는 이렇게 하던데요 ^^", "type": 1},
+	{"text": "내부 검토 중입니다. 기다려요 ^^", "type": 2},
+	{"text": "이건 제 직감인데... ^^", "type": 3},
+	{"text": "한번 더 보완해봐요 ^^", "type": 0},
+	{"text": "처음부터 다시 하는 게 낫겠어요 ^^", "type": 3},
+	{"text": "이 방향으로 계속 가면 될까요? ^^", "type": 0},
+	{"text": "프리미엄 느낌이 부족해요 ^^", "type": 1},
+	{"text": "MZ세대 감성으로 해봐요 ^^", "type": 1},
+	{"text": "바이럴될 것 같아요? ^^", "type": 0},
+	{"text": "레퍼런스 좀 더 찾아봐요 ^^", "type": 2},
+	{"text": "임팩트가 없어요 ^^", "type": 1},
+	{"text": "트렌디하게 가야죠 ^^", "type": 0},
+	{"text": "이거 ROI가 나올까요? ^^", "type": 2},
+	{"text": "피드백은 월요일에 드릴게요 ^^", "type": 3},
+	{"text": "어제까지 부탁했는데... ^^", "type": 3},
+	{"text": "디테일이 살아야죠 ^^", "type": 0},
+	{"text": "글로벌 감각으로 부탁해요 ^^", "type": 2},
+	{"text": "이거 좀 더 세련되게 해줘요 ^^", "type": 1},
+	{"text": "스토리텔링이 중요해요 ^^", "type": 0},
 ]
 
 const TYPE_COLOR := [
@@ -48,6 +48,7 @@ const SCREEN_H    := 844.0
 
 var _hp: int = MAX_HP
 var _score: int = 0
+var _speed_level: int = 0
 var _elapsed: float = 0.0
 var _alive: bool = true
 var _spawn_timer: float = 0.0
@@ -111,6 +112,10 @@ func _try_smash(tap: Vector2) -> void:
 func _smash_phrase(idx: int, nd: ColorRect) -> void:
 	_score += 1
 	_phrases.remove_at(idx)
+	var new_level := _score / 5
+	if new_level > _speed_level:
+		_speed_level = new_level
+		_show_speedup_notice()
 	# 빨간 번쩍임 후 제거
 	var tween := create_tween()
 	nd.color = Color.WHITE
@@ -140,7 +145,7 @@ func _spawn_phrase() -> void:
 	var data: Dictionary = PHRASES[randi() % PHRASES.size()]
 	var ptype: int = data["type"]
 	var w: float = TYPE_WIDTH[ptype]
-	var speed_mult := 1.0 + _elapsed * 0.010
+	var speed_mult := 1.0 + _elapsed * 0.010 + _speed_level * 0.18
 	var speed: float = TYPE_SPEED[ptype] * speed_mult
 	var x: float = randf_range(w / 2.0 + 4.0, SCREEN_W - w / 2.0 - 4.0)
 
@@ -177,6 +182,21 @@ func _update_phrases(delta: float) -> void:
 				return
 	for info in to_remove:
 		_phrases.erase(info)
+
+
+func _show_speedup_notice() -> void:
+	var lbl := Label.new()
+	lbl.text = "🔥 빨라진다!! (x%.1f)" % (1.0 + _speed_level * 0.18)
+	lbl.horizontal_alignment = 1
+	lbl.add_theme_font_size_override("font_size", 26)
+	lbl.add_theme_color_override("font_color", Color(1.0, 0.3, 0.0, 1.0))
+	lbl.size = Vector2(390, 60)
+	lbl.position = Vector2(0, 380)
+	add_child(lbl)
+	var t := create_tween()
+	t.tween_property(lbl, "position:y", 300.0, 0.4)
+	t.parallel().tween_property(lbl, "modulate:a", 0.0, 0.5)
+	t.tween_callback(lbl.queue_free)
 
 
 func _take_damage() -> void:

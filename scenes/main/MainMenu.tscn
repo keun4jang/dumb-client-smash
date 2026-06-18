@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 position = Vector2(0, 120)
 size = Vector2(390, 80)
 text = "DUMB CLIENT SMASH"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 theme_override_font_sizes/font_size = 32
 theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 
@@ -26,7 +26,7 @@ theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 position = Vector2(0, 210)
 size = Vector2(390, 40)
 text = "Stress Relief Game"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 theme_override_font_sizes/font_size = 20
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 
@@ -50,7 +50,7 @@ text = "SETTINGS"
 position = Vector2(270, 20)
 size = Vector2(110, 40)
 text = "Gold: 0"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+horizontal_alignment = 2
 
 [node name="WeaponLabel" type="Label" parent="."]
 position = Vector2(10, 20)
@@ -76,7 +76,7 @@ size = Vector2(350, 520)
 position = Vector2(10, 10)
 size = Vector2(330, 36)
 text = "Gold: 0"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+horizontal_alignment = 2
 
 [node name="VBox" type="VBoxContainer" parent="UpgradeScreen/Panel"]
 position = Vector2(20, 55)
@@ -84,7 +84,7 @@ size = Vector2(310, 440)
 
 [node name="TitleLabel" type="Label" parent="UpgradeScreen/Panel/VBox"]
 text = "Weapon Upgrade"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 
 [node name="CurrentWeaponLabel" type="Label" parent="UpgradeScreen/Panel/VBox"]
 text = "Now: -"

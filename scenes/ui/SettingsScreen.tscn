@@ -22,7 +22,7 @@ size = Vector2(310, 410)
 
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
 text = "Settings"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 
 [node name="Separator1" type="HSeparator" parent="Panel/VBox"]
 

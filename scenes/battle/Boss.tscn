@@ -25,7 +25,7 @@ position = Vector2(8, 8)
 size = Vector2(224, 60)
 text = ""
 autowrap_mode = 3
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 
 [node name="ChargeBar" type="ProgressBar" parent="QuoteBubble"]
 position = Vector2(8, 72)

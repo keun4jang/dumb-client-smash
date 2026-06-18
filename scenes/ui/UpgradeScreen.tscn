@@ -20,7 +20,7 @@ size = Vector2(350, 550)
 position = Vector2(10, 10)
 size = Vector2(330, 36)
 text = "Gold: 0"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+horizontal_alignment = 2
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 position = Vector2(20, 55)
@@ -28,7 +28,7 @@ size = Vector2(310, 460)
 
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
 text = "Weapon Upgrade"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 
 [node name="Separator1" type="HSeparator" parent="Panel/VBox"]
 

@@ -63,7 +63,7 @@ visible = false
 position = Vector2(120, 680)
 size = Vector2(150, 40)
 text = "0 combo"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(1, 1, 0.4, 1)
 
@@ -72,5 +72,5 @@ visible = false
 position = Vector2(80, 380)
 size = Vector2(230, 80)
 text = "PERFECT!"
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 theme_override_font_sizes/font_size = 52

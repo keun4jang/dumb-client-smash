@@ -19,5 +19,5 @@ theme_override_font_sizes/font_size = 48
 position = Vector2(-80, -200)
 size = Vector2(160, 40)
 text = ""
-horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+horizontal_alignment = 1
 autowrap_mode = 3

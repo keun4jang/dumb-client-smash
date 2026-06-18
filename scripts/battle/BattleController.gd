@@ -83,7 +83,7 @@ func _on_player_attacked(damage: int, is_critical: bool, hit_pos: Vector2) -> vo
 
 	hit_feedback.play_hit(hit_pos, is_critical, GameManager.weapon_level)
 	hit_feedback.spawn_damage_text(hit_pos, damage, is_critical)
-	_increment_combo(_is_critical)
+	_increment_combo(is_critical)
 	await _apply_hit_stop(is_critical)
 
 func _apply_hit_stop(is_critical: bool) -> void:

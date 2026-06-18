@@ -7,7 +7,7 @@ extends Control
 @onready var close_button: Button = $Panel/VBox/CloseButton
 @onready var gold_label: Label = $Panel/GoldLabel
 
-const UPGRADE_COSTS := [0, 100, 250, 500, 1000]
+const UPGRADE_COSTS: Array[int] = [0, 100, 250, 500, 1000]
 
 func _ready() -> void:
 	upgrade_button.pressed.connect(_on_upgrade)

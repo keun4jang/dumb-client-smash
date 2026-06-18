@@ -15,7 +15,7 @@ func on_tap(position: Vector2) -> void:
 	var damage := base_attack + randi_range(0, int(base_attack * 0.1))
 	var is_critical := randf() < CRITICAL_CHANCE
 	if is_critical:
-		var crit_mult: float = weapon_data.get("critical", 20) / 100.0
+		var crit_mult: float = float(weapon_data.get("critical", 20)) / 100.0
 		damage = int(damage * (1.0 + crit_mult))
 	weapon.play_swing(is_critical)
 	attacked.emit(damage, is_critical, position)

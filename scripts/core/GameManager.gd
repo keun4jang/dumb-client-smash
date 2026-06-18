@@ -3,7 +3,7 @@ extends Node
 signal gold_changed(new_gold: int)
 signal weapon_upgraded(weapon_data: Dictionary)
 
-const UPGRADE_COSTS := [0, 100, 250, 500, 1000]
+const UPGRADE_COSTS: Array[int] = [0, 100, 250, 500, 1000]
 
 var gold: int = 0
 var weapon_level: int = 1

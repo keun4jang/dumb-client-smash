@@ -13,24 +13,37 @@ position = Vector2(0, 0)
 size = Vector2(390, 844)
 
 [node name="PlayerVisual" type="Node2D" parent="."]
-position = Vector2(195, 730)
+position = Vector2(195, 780)
 scale = Vector2(0.58, 0.58)
 script = ExtResource("2")
+
+[node name="DamageFlash" type="ColorRect" parent="."]
+color = Color(1, 0.2, 0.2, 0)
+position = Vector2(0, 0)
+size = Vector2(390, 844)
+mouse_filter = 2
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
 position = Vector2(10, 10)
-size = Vector2(370, 40)
-text = "생존: 0.0초"
+size = Vector2(370, 44)
+text = "💥 0개 격파"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(1, 1, 0.3, 1)
 
-[node name="HintLabel" type="Label" parent="HUD"]
-position = Vector2(10, 800)
+[node name="HpLabel" type="Label" parent="HUD"]
+position = Vector2(10, 56)
 size = Vector2(370, 36)
-text = "← → 키 또는 터치로 이동"
+text = "❤️❤️❤️❤️❤️"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+
+[node name="HintLabel" type="Label" parent="HUD"]
+position = Vector2(10, 806)
+size = Vector2(370, 30)
+text = "개소리를 탭해서 줘패세요!"
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
@@ -42,7 +55,7 @@ visible = false
 script = ExtResource("3")
 
 [node name="Bg" type="ColorRect" parent="GameOverScreen"]
-color = Color(0, 0, 0, 0.82)
+color = Color(0, 0, 0, 0.90)
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -61,9 +74,9 @@ theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.9, 0.1, 0.1, 1)
 
 [node name="ScoreLabel" type="Label" parent="GameOverScreen/Panel/VBox"]
-text = "생존 시간: 0.0초"
+text = "💥 0개 격파"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 20
 
 [node name="Sep1" type="HSeparator" parent="GameOverScreen/Panel/VBox"]
 

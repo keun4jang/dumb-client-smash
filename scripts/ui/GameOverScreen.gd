@@ -12,6 +12,11 @@ func _ready() -> void:
 	submit_button.pressed.connect(_on_submit)
 
 
+func show_result_smash(smashed: int, elapsed: float) -> void:
+	score_label.text = "💥 %d개 격파  (%.1f초 생존)" % [smashed, elapsed]
+	_refresh_leaderboard()
+
+
 func show_result(elapsed: float) -> void:
 	score_label.text = "생존 시간: %.1f초" % elapsed
 	_refresh_leaderboard()
@@ -19,10 +24,13 @@ func show_result(elapsed: float) -> void:
 
 func _refresh_leaderboard() -> void:
 	var scores: Array = SaveManager.load_scores()
+	if scores.is_empty():
+		leaderboard_label.text = "=== 역대 기록 ===\n(아직 기록 없음)"
+		return
 	var txt := "=== 역대 기록 ===\n"
 	for i in scores.size():
 		var entry: Dictionary = scores[i]
-		txt += "%d. %s  %.1f초\n" % [i + 1, entry["name"], entry["score"]]
+		txt += "%d위  %s  %d개\n" % [i + 1, entry["name"], int(entry["score"])]
 	leaderboard_label.text = txt
 
 

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Boss
 
 signal hp_changed(current: int, max_hp: int)
 signal defeated()

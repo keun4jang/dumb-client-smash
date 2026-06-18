@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "기획안 제출",
+    "name": "Stage 1: Proposal",
     "enemy_index": 0,
     "background_color": "#1a1a2e",
     "bgm": "bgm_office",
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "name": "시안 발표",
+    "name": "Stage 2: Presentation",
     "enemy_index": 1,
     "background_color": "#16213e",
     "bgm": "bgm_tension",
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "name": "최종 결재",
+    "name": "Stage 3: Final Approval",
     "enemy_index": 2,
     "background_color": "#0f3460",
     "bgm": "bgm_tension",
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "name": "보스: 검토만 3년째",
+    "name": "BOSS: 3-Year Reviewer",
     "is_boss": true,
     "background_color": "#1a0a0a",
     "bgm": "bgm_boss",

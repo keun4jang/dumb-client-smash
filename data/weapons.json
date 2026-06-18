@@ -1,7 +1,7 @@
 [
   {
     "level": 1,
-    "name": "돌돌 만 견적서",
+    "name": "Rolled Estimate",
     "attack": 10,
     "critical": 20,
     "scale": 1.0,
@@ -11,7 +11,7 @@
   },
   {
     "level": 2,
-    "name": "두꺼운 계약서",
+    "name": "Thick Contract",
     "attack": 15,
     "critical": 30,
     "scale": 1.2,
@@ -21,7 +21,7 @@
   },
   {
     "level": 3,
-    "name": "야근 키보드",
+    "name": "Overtime Keyboard",
     "attack": 22,
     "critical": 44,
     "scale": 1.4,
@@ -31,7 +31,7 @@
   },
   {
     "level": 4,
-    "name": "회의록 해머",
+    "name": "Meeting Minutes Hammer",
     "attack": 32,
     "critical": 64,
     "scale": 1.7,
@@ -41,7 +41,7 @@
   },
   {
     "level": 5,
-    "name": "갑질분쇄 빠따",
+    "name": "Authority Smasher",
     "attack": 45,
     "critical": 90,
     "scale": 2.0,

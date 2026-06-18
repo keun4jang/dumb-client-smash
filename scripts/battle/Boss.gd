@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	charge_bar.value = _charge_elapsed / charge_time * 100.0
 
 	if _charge_elapsed >= charge_time:
+		_is_charging = false  # guard first so _process can't re-enter
 		_resolve_pattern()
 
 func take_damage(amount: int, is_critical: bool) -> void:
@@ -127,7 +128,7 @@ func _resolve_pattern() -> void:
 func _start_repeat_pattern() -> void:
 	_charge_elapsed = 0.0
 	_player_blocked = false
-	_block_time = -1.0
+	_block_time = -1.0  # must reset so previous rep's timing doesn't carry over
 	_is_charging = true
 	charge_bar.value = 0
 	quote_bubble.visible = true

@@ -13,7 +13,7 @@ signal retry()
 func _ready() -> void:
 	submit_button.pressed.connect(_on_submit)
 	retry_button.pressed.connect(func(): emit_signal("retry"))
-	var font: Font = load("res://assets/fonts/NotoSansKR-Regular.ttf")
+	var font: Font = preload("res://assets/fonts/NotoSansKR-Regular.ttf")
 	if font:
 		for node in [$Panel/VBox/Title, score_label, leaderboard_label,
 				$Panel/VBox/NameHint, name_input, submit_button, retry_button]:

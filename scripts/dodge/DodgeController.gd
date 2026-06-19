@@ -54,6 +54,7 @@ var _alive: bool = true
 var _spawn_timer: float = 0.0
 var _spawn_interval: float = 1.3
 var _phrases: Array = []
+const _FONT := preload("res://assets/fonts/NotoSansKR-Regular.ttf")
 var _font: Font = null
 
 @onready var player_visual: Node2D = $PlayerVisual
@@ -62,7 +63,7 @@ var _font: Font = null
 
 
 func _ready() -> void:
-	_font = load("res://assets/fonts/NotoSansKR-Regular.ttf")
+	_font = _FONT
 	if _font:
 		score_label.add_theme_font_override("font", _font)
 		hp_label.add_theme_font_override("font", _font)

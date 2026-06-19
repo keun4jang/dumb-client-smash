@@ -58,24 +58,16 @@ const _FONT := preload("res://assets/fonts/NotoSansKR-Regular.ttf")
 var _font: Font = null
 
 @onready var player_visual: Node2D = $PlayerVisual
-@onready var score_label: Label = $HUD/ScoreLabel
-@onready var hp_label: Label = $HUD/HpLabel
-
-
-func _apply_font(node: Control) -> void:
-	node.add_theme_font_override("font", _FONT)
+@onready var score_label: Label = $HUD/HUDRoot/ScoreLabel
+@onready var hp_label: Label = $HUD/HUDRoot/HpLabel
 
 
 func _ready() -> void:
 	_font = _FONT
-	for n in [score_label, hp_label, $HUD/HintLabel, $HUD/BackButton]:
-		_apply_font(n)
-	score_label.add_theme_color_override("font_color", Color(1, 1, 0.3, 1))
-	score_label.add_theme_font_size_override("font_size", 22)
-	hp_label.add_theme_font_size_override("font_size", 18)
-	$HUD/HintLabel.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, 1))
-	$HUD/HintLabel.add_theme_font_size_override("font_size", 14)
-	$HUD/BackButton.add_theme_font_size_override("font_size", 14)
+	var t := Theme.new()
+	t.default_font = _FONT
+	t.default_font_size = 16
+	$HUD/HUDRoot.theme = t
 	score_label.text = "%d개 격파" % _score
 	hp_label.text = _hp_hearts()
 	$GameOverScreen.visible = false
@@ -83,7 +75,7 @@ func _ready() -> void:
 	$GameOverScreen.retry.connect(func():
 		get_tree().change_scene_to_file("res://scenes/dodge/DodgeScene.tscn")
 	)
-	$HUD/BackButton.pressed.connect(func():
+	$HUD/HUDRoot/BackButton.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/main/MainMenu.tscn")
 	)
 
@@ -182,9 +174,11 @@ func _spawn_phrase() -> void:
 	lbl.vertical_alignment = 1
 	lbl.size = Vector2(w - 8.0, TYPE_HEIGHT)
 	lbl.position = Vector2(4.0, 0.0)
-	lbl.add_theme_font_override("font", _FONT)
-	lbl.add_theme_font_size_override("font_size", 16)
-	lbl.add_theme_color_override("font_color", Color.WHITE)
+	var lt := Theme.new()
+	lt.default_font = _FONT
+	lt.default_font_size = 16
+	lt.set_color("font_color", "Label", Color.WHITE)
+	lbl.theme = lt
 	panel.add_child(lbl)
 
 	_phrases.append({"node": panel, "speed": speed, "type": ptype, "w": w})

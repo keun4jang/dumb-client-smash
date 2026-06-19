@@ -21,9 +21,28 @@ func _ready() -> void:
 
 
 func post_score(player_name: String, score: int) -> void:
+	if OS.get_name() == "Web":
+		_post_via_js(player_name, score)
+	else:
+		var body := JSON.stringify({"name": player_name, "score": score})
+		var headers := ["Content-Type: application/json"]
+		_http_post.request(DB_URL + ".json", headers, HTTPClient.METHOD_POST, body)
+
+
+func _post_via_js(player_name: String, score: int) -> void:
+	var _post_cb = JavaScriptBridge.create_callback(_on_js_post_done)
 	var body := JSON.stringify({"name": player_name, "score": score})
-	var headers := ["Content-Type: application/json"]
-	_http_post.request(DB_URL + ".json", headers, HTTPClient.METHOD_POST, body)
+	var js_code := """
+		fetch('%s.json', {method:'POST', headers:{'Content-Type':'application/json'}, body:'%s'})
+			.then(function(){ godot_firebase_post_cb(true); })
+			.catch(function(){ godot_firebase_post_cb(false); });
+	""" % [DB_URL, body]
+	JavaScriptBridge.get_interface("window").godot_firebase_post_cb = _post_cb
+	JavaScriptBridge.eval(js_code)
+
+
+func _on_js_post_done(_args) -> void:
+	emit_signal("score_posted")
 
 
 func fetch_top_scores() -> void:

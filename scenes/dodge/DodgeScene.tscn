@@ -100,11 +100,11 @@ theme_override_font_sizes/font_size = 15
 [node name="Sep2" type="HSeparator" parent="GameOverScreen/Panel/VBox"]
 
 [node name="NameHint" type="Label" parent="GameOverScreen/Panel/VBox"]
-text = "이름을 입력하세요"
+text = "영어/숫자로 입력하세요 (한글 X)"
 horizontal_alignment = 1
 
 [node name="NameInput" type="LineEdit" parent="GameOverScreen/Panel/VBox"]
-placeholder_text = "닉네임"
+placeholder_text = "nickname (English only)"
 max_length = 12
 custom_minimum_size = Vector2(0, 50)
 

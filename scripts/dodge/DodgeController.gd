@@ -68,7 +68,7 @@ func _ready() -> void:
 		hp_label.add_theme_font_override("font", _font)
 		$HUD/HintLabel.add_theme_font_override("font", _font)
 		$HUD/BackButton.add_theme_font_override("font", _font)
-	score_label.text = "💥 %d개 격파" % _score
+	score_label.text = "%d개 격파" % _score
 	hp_label.text = _hp_hearts()
 	$GameOverScreen.visible = false
 	$GameOverScreen.submitted.connect(_on_score_submitted)
@@ -89,10 +89,7 @@ func _process(delta: float) -> void:
 
 
 func _hp_hearts() -> String:
-	var s := ""
-	for i in MAX_HP:
-		s += "❤️" if i < _hp else "🖤"
-	return s
+	return "HP: " + "v".repeat(_hp) + "-".repeat(MAX_HP - _hp)
 
 
 func _input(event: InputEvent) -> void:
@@ -125,7 +122,7 @@ func _try_smash(tap: Vector2) -> void:
 func _smash_phrase(idx: int, nd: ColorRect) -> void:
 	HapticManager.vibrate()
 	_score += 1
-	score_label.text = "💥 %d개 격파" % _score
+	score_label.text = "%d개 격파" % _score
 	_phrases.remove_at(idx)
 	var new_level := _score / 5
 	if new_level > _speed_level:
@@ -203,10 +200,12 @@ func _update_phrases(delta: float) -> void:
 
 func _show_speedup_notice() -> void:
 	var lbl := Label.new()
-	lbl.text = "🔥 빨라진다!! (x%.1f)" % (1.0 + _speed_level * 0.18)
+	lbl.text = "!! 빨라진다!! (x%.1f)" % (1.0 + _speed_level * 0.18)
 	lbl.horizontal_alignment = 1
 	lbl.add_theme_font_size_override("font_size", 26)
 	lbl.add_theme_color_override("font_color", Color(1.0, 0.3, 0.0, 1.0))
+	if _font:
+		lbl.add_theme_font_override("font", _font)
 	lbl.size = Vector2(390, 60)
 	lbl.position = Vector2(0, 380)
 	add_child(lbl)

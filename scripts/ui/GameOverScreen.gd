@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func show_result_smash(smashed: int, elapsed: float) -> void:
-	score_label.text = "💥 %d개 격파  (%.1f초 생존)" % [smashed, elapsed]
+	score_label.text = "%d개 격파  (%.1f초 생존)" % [smashed, elapsed]
 	_refresh_leaderboard()
 
 

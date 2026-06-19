@@ -37,17 +37,17 @@ theme_override_constants/separation = 16
 
 [node name="StartButton" type="Button" parent="VBox"]
 custom_minimum_size = Vector2(200, 70)
-text = "▶  게임 시작"
+text = "게임 시작"
 theme_override_font_sizes/font_size = 20
 
 [node name="LeaderboardButton" type="Button" parent="VBox"]
 custom_minimum_size = Vector2(200, 60)
-text = "🏆  순위표"
+text = "순위표"
 theme_override_font_sizes/font_size = 18
 
 [node name="SettingsButton" type="Button" parent="VBox"]
 custom_minimum_size = Vector2(200, 60)
-text = "⚙️  설정"
+text = "설정"
 theme_override_font_sizes/font_size = 18
 
 [node name="LeaderboardOverlay" type="Control" parent="."]

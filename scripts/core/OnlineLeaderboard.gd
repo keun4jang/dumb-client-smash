@@ -26,8 +26,7 @@ func post_score(player_name: String, score: int) -> void:
 
 
 func fetch_top_scores() -> void:
-	var url := DB_URL + ".json?orderBy=\"score\"&limitToLast=10"
-	_http_get.request(url)
+	_http_get.request(DB_URL + ".json")
 
 
 func _on_post_completed(_result, _code, _headers, _body) -> void:

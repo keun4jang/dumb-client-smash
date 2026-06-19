@@ -7,6 +7,7 @@ signal score_posted()
 
 var _http_post: HTTPRequest
 var _http_get: HTTPRequest
+var _js_callback: JavaScriptObject
 
 
 func _ready() -> void:
@@ -26,7 +27,27 @@ func post_score(player_name: String, score: int) -> void:
 
 
 func fetch_top_scores() -> void:
-	_http_get.request(DB_URL + ".json")
+	if OS.get_name() == "Web":
+		_fetch_via_js()
+	else:
+		_http_get.request(DB_URL + ".json")
+
+
+func _fetch_via_js() -> void:
+	_js_callback = JavaScriptBridge.create_callback(_on_js_fetch_done)
+	var js_code := """
+		fetch('%s.json')
+			.then(function(r){ return r.json(); })
+			.then(function(data){ godot_firebase_cb(JSON.stringify(data)); })
+			.catch(function(e){ godot_firebase_cb('null'); });
+	""" % DB_URL
+	JavaScriptBridge.get_interface("window").godot_firebase_cb = _js_callback
+	JavaScriptBridge.eval(js_code)
+
+
+func _on_js_fetch_done(args) -> void:
+	var text: String = str(args[0])
+	_parse_and_emit(text)
 
 
 func _on_post_completed(_result, _code, _headers, _body) -> void:
@@ -34,7 +55,10 @@ func _on_post_completed(_result, _code, _headers, _body) -> void:
 
 
 func _on_get_completed(_result, _code, _headers, body: PackedByteArray) -> void:
-	var text := body.get_string_from_utf8()
+	_parse_and_emit(body.get_string_from_utf8())
+
+
+func _parse_and_emit(text: String) -> void:
 	var parsed = JSON.parse_string(text)
 	if parsed == null or not parsed is Dictionary:
 		emit_signal("scores_loaded", [])

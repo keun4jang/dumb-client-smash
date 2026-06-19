@@ -29,6 +29,13 @@ func save_settings(bgm_vol: float, sfx_vol: float, vibration: bool) -> void:
 
 func save_score(player_name: String, score: float) -> void:
 	var scores: Array = load_scores()
+	# Remove existing entry for same name if new score is higher
+	for i in range(scores.size() - 1, -1, -1):
+		if scores[i]["name"] == player_name and score > scores[i]["score"]:
+			scores.remove_at(i)
+			break
+		elif scores[i]["name"] == player_name:
+			return  # Existing score is better or equal, don't save
 	scores.append({"name": player_name, "score": score})
 	scores.sort_custom(func(a, b): return a["score"] > b["score"])
 	if scores.size() > 10:

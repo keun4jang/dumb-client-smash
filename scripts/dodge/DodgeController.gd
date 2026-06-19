@@ -68,6 +68,8 @@ func _ready() -> void:
 		hp_label.add_theme_font_override("font", _font)
 		$HUD/HintLabel.add_theme_font_override("font", _font)
 		$HUD/BackButton.add_theme_font_override("font", _font)
+	score_label.text = "💥 %d개 격파" % _score
+	hp_label.text = _hp_hearts()
 	$GameOverScreen.visible = false
 	$GameOverScreen.submitted.connect(_on_score_submitted)
 	$GameOverScreen.retry.connect(func():
@@ -84,8 +86,6 @@ func _process(delta: float) -> void:
 	_elapsed += delta
 	_update_spawn(delta)
 	_update_phrases(delta)
-	score_label.text = "💥 %d개 격파" % _score
-	hp_label.text = _hp_hearts()
 
 
 func _hp_hearts() -> String:
@@ -123,7 +123,9 @@ func _try_smash(tap: Vector2) -> void:
 
 
 func _smash_phrase(idx: int, nd: ColorRect) -> void:
+	HapticManager.vibrate()
 	_score += 1
+	score_label.text = "💥 %d개 격파" % _score
 	_phrases.remove_at(idx)
 	var new_level := _score / 5
 	if new_level > _speed_level:
@@ -216,6 +218,8 @@ func _show_speedup_notice() -> void:
 
 func _take_damage() -> void:
 	_hp -= 1
+	HapticManager.vibrate()
+	hp_label.text = _hp_hearts()
 	# 화면 빨간 번쩍임
 	$DamageFlash.modulate = Color(1, 0.2, 0.2, 0.5)
 	var t := create_tween()
@@ -230,6 +234,8 @@ func _die() -> void:
 		(info["node"] as Node).queue_free()
 	_phrases.clear()
 	$Background.visible = false
+	$DamageFlash.visible = false
+	$DamageFlash.modulate = Color(1, 1, 1, 0)
 	$GameOverScreen.visible = true
 	$GameOverScreen.show_result_smash(_score, _elapsed)
 

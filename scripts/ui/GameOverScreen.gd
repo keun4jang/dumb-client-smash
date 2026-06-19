@@ -25,11 +25,6 @@ func show_result_smash(smashed: int, elapsed: float) -> void:
 	_refresh_leaderboard()
 
 
-func show_result(elapsed: float) -> void:
-	score_label.text = "생존 시간: %.1f초" % elapsed
-	_refresh_leaderboard()
-
-
 func _refresh_leaderboard() -> void:
 	var scores: Array = SaveManager.load_scores()
 	if scores.is_empty():

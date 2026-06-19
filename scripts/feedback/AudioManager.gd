@@ -70,6 +70,8 @@ func play_bgm(track: String) -> void:
 	_bgm_player.play()
 
 func stop_bgm() -> void:
+	if _bgm_player == null:
+		return
 	_bgm_player.stop()
 
 func set_sfx_volume(vol: float) -> void:

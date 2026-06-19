@@ -62,29 +62,20 @@ var _font: Font = null
 @onready var hp_label: Label = $HUD/HpLabel
 
 
-func _set_font(node: Control, size: int, color: Color = Color.WHITE) -> void:
-	var t := Theme.new()
-	t.set_font("font", node.get_class(), _FONT)
-	t.set_font_size("font_size", node.get_class(), size)
-	if node is Label:
-		t.set_color("font_color", "Label", color)
-	node.theme = t
-
-
-func _make_ls(size: int, color: Color = Color.WHITE) -> LabelSettings:
-	var s := LabelSettings.new()
-	s.font = _FONT
-	s.font_size = size
-	s.font_color = color
-	return s
+func _apply_font(node: Control) -> void:
+	node.add_theme_font_override("font", _FONT)
 
 
 func _ready() -> void:
 	_font = _FONT
-	_set_font(score_label, 22, Color(1, 1, 0.3, 1))
-	_set_font(hp_label, 18, Color.WHITE)
-	_set_font($HUD/HintLabel, 14, Color(0.7, 0.7, 0.7, 1))
-	_set_font($HUD/BackButton, 14, Color.WHITE)
+	for n in [score_label, hp_label, $HUD/HintLabel, $HUD/BackButton]:
+		_apply_font(n)
+	score_label.add_theme_color_override("font_color", Color(1, 1, 0.3, 1))
+	score_label.add_theme_font_size_override("font_size", 22)
+	hp_label.add_theme_font_size_override("font_size", 18)
+	$HUD/HintLabel.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, 1))
+	$HUD/HintLabel.add_theme_font_size_override("font_size", 14)
+	$HUD/BackButton.add_theme_font_size_override("font_size", 14)
 	score_label.text = "%d개 격파" % _score
 	hp_label.text = _hp_hearts()
 	$GameOverScreen.visible = false
@@ -191,11 +182,9 @@ func _spawn_phrase() -> void:
 	lbl.vertical_alignment = 1
 	lbl.size = Vector2(w - 8.0, TYPE_HEIGHT)
 	lbl.position = Vector2(4.0, 0.0)
-	var lt := Theme.new()
-	lt.set_font("font", "Label", _FONT)
-	lt.set_font_size("font_size", "Label", 16)
-	lt.set_color("font_color", "Label", Color.WHITE)
-	lbl.theme = lt
+	lbl.add_theme_font_override("font", _FONT)
+	lbl.add_theme_font_size_override("font_size", 16)
+	lbl.add_theme_color_override("font_color", Color.WHITE)
 	panel.add_child(lbl)
 
 	_phrases.append({"node": panel, "speed": speed, "type": ptype, "w": w})
@@ -220,11 +209,9 @@ func _show_speedup_notice() -> void:
 	var lbl := Label.new()
 	lbl.text = "!! 빨라진다!! (x%.1f)" % (1.0 + _speed_level * 0.18)
 	lbl.horizontal_alignment = 1
-	var nt := Theme.new()
-	nt.set_font("font", "Label", _FONT)
-	nt.set_font_size("font_size", "Label", 26)
-	nt.set_color("font_color", "Label", Color(1.0, 0.3, 0.0, 1.0))
-	lbl.theme = nt
+	lbl.add_theme_font_override("font", _FONT)
+	lbl.add_theme_font_size_override("font_size", 26)
+	lbl.add_theme_color_override("font_color", Color(1.0, 0.3, 0.0, 1.0))
 	lbl.size = Vector2(390, 60)
 	lbl.position = Vector2(0, 380)
 	add_child(lbl)

@@ -10,14 +10,26 @@ signal retry()
 @onready var leaderboard_label: Label = $Panel/VBox/LeaderboardLabel
 
 
+const _FONT := preload("res://assets/fonts/NotoSansKR-Regular.ttf")
+
+
+func _make_ls(size: int, color: Color = Color(0.9, 0.9, 0.9, 1)) -> LabelSettings:
+	var s := LabelSettings.new()
+	s.font = _FONT
+	s.font_size = size
+	s.font_color = color
+	return s
+
+
 func _ready() -> void:
 	submit_button.pressed.connect(_on_submit)
 	retry_button.pressed.connect(func(): emit_signal("retry"))
-	var font: Font = preload("res://assets/fonts/NotoSansKR-Regular.ttf")
-	if font:
-		for node in [$Panel/VBox/Title, score_label, leaderboard_label,
-				$Panel/VBox/NameHint, name_input, submit_button, retry_button]:
-			node.add_theme_font_override("font", font)
+	$Panel/VBox/Title.label_settings = _make_ls(28, Color(0.9, 0.1, 0.1, 1))
+	score_label.label_settings = _make_ls(20)
+	leaderboard_label.label_settings = _make_ls(15)
+	$Panel/VBox/NameHint.label_settings = _make_ls(14)
+	for node in [name_input, submit_button, retry_button]:
+		node.add_theme_font_override("font", _FONT)
 
 
 func show_result_smash(smashed: int, elapsed: float) -> void:

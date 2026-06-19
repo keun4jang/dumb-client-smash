@@ -62,13 +62,20 @@ var _font: Font = null
 @onready var hp_label: Label = $HUD/HpLabel
 
 
+func _make_ls(size: int, color: Color = Color.WHITE) -> LabelSettings:
+	var s := LabelSettings.new()
+	s.font = _FONT
+	s.font_size = size
+	s.font_color = color
+	return s
+
+
 func _ready() -> void:
 	_font = _FONT
-	if _font:
-		score_label.add_theme_font_override("font", _font)
-		hp_label.add_theme_font_override("font", _font)
-		$HUD/HintLabel.add_theme_font_override("font", _font)
-		$HUD/BackButton.add_theme_font_override("font", _font)
+	score_label.label_settings = _make_ls(22, Color(1, 1, 0.3, 1))
+	hp_label.label_settings = _make_ls(18, Color.WHITE)
+	$HUD/HintLabel.label_settings = _make_ls(14, Color(0.7, 0.7, 0.7, 1))
+	$HUD/BackButton.add_theme_font_override("font", _FONT)
 	score_label.text = "%d개 격파" % _score
 	hp_label.text = _hp_hearts()
 	$GameOverScreen.visible = false
@@ -175,10 +182,7 @@ func _spawn_phrase() -> void:
 	lbl.vertical_alignment = 1
 	lbl.size = Vector2(w - 8.0, TYPE_HEIGHT)
 	lbl.position = Vector2(4.0, 0.0)
-	lbl.add_theme_font_size_override("font_size", 16)
-	lbl.add_theme_color_override("font_color", Color.WHITE)
-	if _font:
-		lbl.add_theme_font_override("font", _font)
+	lbl.label_settings = _make_ls(16, Color.WHITE)
 	panel.add_child(lbl)
 
 	_phrases.append({"node": panel, "speed": speed, "type": ptype, "w": w})
@@ -203,10 +207,7 @@ func _show_speedup_notice() -> void:
 	var lbl := Label.new()
 	lbl.text = "!! 빨라진다!! (x%.1f)" % (1.0 + _speed_level * 0.18)
 	lbl.horizontal_alignment = 1
-	lbl.add_theme_font_size_override("font_size", 26)
-	lbl.add_theme_color_override("font_color", Color(1.0, 0.3, 0.0, 1.0))
-	if _font:
-		lbl.add_theme_font_override("font", _font)
+	lbl.label_settings = _make_ls(26, Color(1.0, 0.3, 0.0, 1.0))
 	lbl.size = Vector2(390, 60)
 	lbl.position = Vector2(0, 380)
 	add_child(lbl)

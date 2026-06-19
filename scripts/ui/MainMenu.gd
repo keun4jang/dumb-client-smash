@@ -1,5 +1,7 @@
 extends Control
 
+const _FONT := preload("res://assets/fonts/NotoSansKR-Regular.ttf")
+
 @onready var start_button: Button = $VBox/StartButton
 @onready var leaderboard_button: Button = $VBox/LeaderboardButton
 @onready var settings_button: Button = $VBox/SettingsButton
@@ -10,6 +12,9 @@ extends Control
 
 
 func _ready() -> void:
+	for node in [$Title, $Subtitle, start_button, leaderboard_button, settings_button,
+			$LeaderboardOverlay/Panel/VBox/PanelTitle, score_list, lb_close]:
+		node.add_theme_font_override("font", _FONT)
 	start_button.pressed.connect(_on_start)
 	leaderboard_button.pressed.connect(_on_leaderboard)
 	settings_button.pressed.connect(_on_settings)

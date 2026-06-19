@@ -23,10 +23,7 @@ position = Vector2(0, 0)
 size = Vector2(390, 844)
 mouse_filter = 2
 
-[node name="HUD" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
 position = Vector2(10, 10)

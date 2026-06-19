@@ -1,15 +1,18 @@
 extends Control
 
 signal submitted(player_name: String)
+signal retry()
 
 @onready var score_label: Label = $Panel/VBox/ScoreLabel
 @onready var name_input: LineEdit = $Panel/VBox/NameInput
 @onready var submit_button: Button = $Panel/VBox/SubmitButton
+@onready var retry_button: Button = $Panel/VBox/RetryButton
 @onready var leaderboard_label: Label = $Panel/VBox/LeaderboardLabel
 
 
 func _ready() -> void:
 	submit_button.pressed.connect(_on_submit)
+	retry_button.pressed.connect(func(): emit_signal("retry"))
 
 
 func show_result_smash(smashed: int, elapsed: float) -> void:

@@ -106,3 +106,8 @@ custom_minimum_size = Vector2(0, 50)
 [node name="SubmitButton" type="Button" parent="GameOverScreen/Panel/VBox"]
 custom_minimum_size = Vector2(0, 60)
 text = "기록 등록 & 메인으로"
+
+[node name="RetryButton" type="Button" parent="GameOverScreen/Panel/VBox"]
+custom_minimum_size = Vector2(0, 55)
+text = "🔄  다시 하기"
+theme_override_font_sizes/font_size = 18

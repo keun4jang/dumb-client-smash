@@ -54,6 +54,7 @@ var _alive: bool = true
 var _spawn_timer: float = 0.0
 var _spawn_interval: float = 1.3
 var _phrases: Array = []
+var _font: Font = null
 
 @onready var player_visual: Node2D = $PlayerVisual
 @onready var score_label: Label = $HUD/ScoreLabel
@@ -61,6 +62,12 @@ var _phrases: Array = []
 
 
 func _ready() -> void:
+	_font = load("res://assets/fonts/NotoSansKR-Regular.ttf")
+	if _font:
+		score_label.add_theme_font_override("font", _font)
+		hp_label.add_theme_font_override("font", _font)
+		$HUD/HintLabel.add_theme_font_override("font", _font)
+		$HUD/BackButton.add_theme_font_override("font", _font)
 	$GameOverScreen.visible = false
 	$GameOverScreen.submitted.connect(_on_score_submitted)
 	$GameOverScreen.retry.connect(func():
@@ -170,6 +177,8 @@ func _spawn_phrase() -> void:
 	lbl.position = Vector2(4.0, 0.0)
 	lbl.add_theme_font_size_override("font_size", 16)
 	lbl.add_theme_color_override("font_color", Color.WHITE)
+	if _font:
+		lbl.add_theme_font_override("font", _font)
 	panel.add_child(lbl)
 
 	_phrases.append({"node": panel, "speed": speed, "type": ptype, "w": w})

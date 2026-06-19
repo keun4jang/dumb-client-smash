@@ -62,6 +62,15 @@ var _font: Font = null
 @onready var hp_label: Label = $HUD/HpLabel
 
 
+func _set_font(node: Control, size: int, color: Color = Color.WHITE) -> void:
+	var t := Theme.new()
+	t.set_font("font", node.get_class(), _FONT)
+	t.set_font_size("font_size", node.get_class(), size)
+	if node is Label:
+		t.set_color("font_color", "Label", color)
+	node.theme = t
+
+
 func _make_ls(size: int, color: Color = Color.WHITE) -> LabelSettings:
 	var s := LabelSettings.new()
 	s.font = _FONT
@@ -72,10 +81,10 @@ func _make_ls(size: int, color: Color = Color.WHITE) -> LabelSettings:
 
 func _ready() -> void:
 	_font = _FONT
-	score_label.label_settings = _make_ls(22, Color(1, 1, 0.3, 1))
-	hp_label.label_settings = _make_ls(18, Color.WHITE)
-	$HUD/HintLabel.label_settings = _make_ls(14, Color(0.7, 0.7, 0.7, 1))
-	$HUD/BackButton.add_theme_font_override("font", _FONT)
+	_set_font(score_label, 22, Color(1, 1, 0.3, 1))
+	_set_font(hp_label, 18, Color.WHITE)
+	_set_font($HUD/HintLabel, 14, Color(0.7, 0.7, 0.7, 1))
+	_set_font($HUD/BackButton, 14, Color.WHITE)
 	score_label.text = "%d개 격파" % _score
 	hp_label.text = _hp_hearts()
 	$GameOverScreen.visible = false
@@ -182,7 +191,11 @@ func _spawn_phrase() -> void:
 	lbl.vertical_alignment = 1
 	lbl.size = Vector2(w - 8.0, TYPE_HEIGHT)
 	lbl.position = Vector2(4.0, 0.0)
-	lbl.label_settings = _make_ls(16, Color.WHITE)
+	var lt := Theme.new()
+	lt.set_font("font", "Label", _FONT)
+	lt.set_font_size("font_size", "Label", 16)
+	lt.set_color("font_color", "Label", Color.WHITE)
+	lbl.theme = lt
 	panel.add_child(lbl)
 
 	_phrases.append({"node": panel, "speed": speed, "type": ptype, "w": w})
@@ -207,7 +220,11 @@ func _show_speedup_notice() -> void:
 	var lbl := Label.new()
 	lbl.text = "!! 빨라진다!! (x%.1f)" % (1.0 + _speed_level * 0.18)
 	lbl.horizontal_alignment = 1
-	lbl.label_settings = _make_ls(26, Color(1.0, 0.3, 0.0, 1.0))
+	var nt := Theme.new()
+	nt.set_font("font", "Label", _FONT)
+	nt.set_font_size("font_size", "Label", 26)
+	nt.set_color("font_color", "Label", Color(1.0, 0.3, 0.0, 1.0))
+	lbl.theme = nt
 	lbl.size = Vector2(390, 60)
 	lbl.position = Vector2(0, 380)
 	add_child(lbl)

@@ -239,6 +239,5 @@ func _die() -> void:
 	$GameOverScreen.show_result_smash(_score, _elapsed)
 
 
-func _on_score_submitted(player_name: String) -> void:
-	SaveManager.save_score(player_name, float(_score))
+func _on_score_submitted(_player_name: String) -> void:
 	get_tree().change_scene_to_file("res://scenes/main/MainMenu.tscn")

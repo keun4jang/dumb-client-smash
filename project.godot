@@ -20,6 +20,7 @@ SaveManager="*res://scripts/core/SaveManager.gd"
 GameManager="*res://scripts/core/GameManager.gd"
 StageManager="*res://scripts/core/StageManager.gd"
 HapticManager="*res://scripts/feedback/HapticManager.gd"
+OnlineLeaderboard="*res://scripts/core/OnlineLeaderboard.gd"
 AudioManager="*res://scripts/feedback/AudioManager.gd"
 
 [display]

@@ -120,7 +120,7 @@ func _try_smash(tap: Vector2) -> void:
 
 
 func _smash_phrase(idx: int, nd: ColorRect) -> void:
-	HapticManager.vibrate()
+	HapticManager.vibrate(50)
 	_score += 1
 	score_label.text = "%d개 격파" % _score
 	_phrases.remove_at(idx)
@@ -217,7 +217,7 @@ func _show_speedup_notice() -> void:
 
 func _take_damage() -> void:
 	_hp -= 1
-	HapticManager.vibrate()
+	HapticManager.vibrate(50)
 	hp_label.text = _hp_hearts()
 	# 화면 빨간 번쩍임
 	$DamageFlash.modulate = Color(1, 0.2, 0.2, 0.5)
